@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+
+public class leetcode4 {
+    public static void main(String[] args){
+
+        int[] nums1 = {1,2};
+        int[] nums2 = {3,4};
+        double result = findMedianSortedArrays(nums1,nums2);
+        System.out.println(result);
+    }
+
+    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        double result = 0;
+        int midpoint1 = 0;
+        int midpoint2 = 0;
+        ArrayList<Integer> list = new ArrayList<>();
+        for(int i = 0; i< nums1.length; i++){
+            list.add(nums1[i]);
+        }
+        for(int i = 0; i< nums2.length; i++){
+            list.add(nums2[i]);
+        }
+
+        Collections.sort(list);
+
+
+        if(list.size()%2 == 0){
+            midpoint1 = (list.size()/2)+1;
+            midpoint2 = (list.size()/2);
+            result = (midpoint1 + midpoint2)/2.0;
+        }else{
+            midpoint1 = list.size()/2;
+            result = list.get(midpoint1);
+        }
+        //System.out.println("list : " + list);
+        //System.out.println("midpoint1 : " + midpoint1);
+        //System.out.println("midpoint2 : " + midpoint2);
+        //System.out.println("result: " + result);
+        return result;
+    }
+}
